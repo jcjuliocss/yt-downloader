@@ -44,7 +44,7 @@ def selecionar_pasta_destino():
     salvar_config(config=config)
 
 def menu():
-    print('*-----YT DONWLOADER-----*\n')
+    print('*-----YT DOWNLOADER-----*\n')
     print('[1] Selecionar pasta de destino\n')
     print('[2] Baixar MP3\n')
     print('[3] Sair\n')
