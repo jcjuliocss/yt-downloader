@@ -14,7 +14,7 @@ def download_mp3(urls):
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        error_code = ydl.download(URLS)
+        ydl.download(URLS)
 
 def carregar_config():
     try:
