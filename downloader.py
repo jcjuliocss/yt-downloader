@@ -31,10 +31,13 @@ def main(page: ft.Page):
     page.update()
 
     def download_mp3(urls):
+        progress_bar_label = ft.Column([ft.Text('Baixando MP3...'), pb])
+        page.add(progress_bar_label)
         def progress_bar(d):
             def fecha_alert(e):
                 alert.open = False
                 page.update()
+
 
             if d['status'] == 'finished':
                 alert = ft.AlertDialog(
@@ -43,12 +46,15 @@ def main(page: ft.Page):
                         ft.TextButton("Ok", on_click=fecha_alert),
                     ],
                     actions_alignment=ft.MainAxisAlignment.END,)
+                page.dialog = alert
+                alert.open = True
+                pb.value = 0
+                page.remove(progress_bar_label)
+                page.update()
             if d['status'] == 'downloading':
-                page.add(ft.Column([ft.Text('Baixando MP3...'), pb]))
-
-                p_cent_str = d['_percent_str']
-                p_cent = p_cent_str.replace('%','')
-                pb.value = float(p_cent)
+                progresso = round(
+                    float(d['downloaded_bytes'])/float(d['total_bytes'])*100,1)
+                pb.value = float(progresso)
 
                 page.update()
 
@@ -109,10 +115,10 @@ def main(page: ft.Page):
         )
     )
 
-    campo_url = ft.TextField(label='URL')
+    campo_url = ft.TextField(label='URL', icon=ft.icons.LINK_SHARP)
     page.add(campo_url)
 
-    pb = ft.ProgressBar(width=800)
+    pb = ft.ProgressBar(width=1000)
 
     page.add(
         ft.Row(
