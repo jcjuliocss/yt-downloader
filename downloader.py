@@ -210,19 +210,19 @@ def main(page: ft.Page):
         ft.Row(
             [
                 ft.ElevatedButton(
-                    "Download MP3",
+                    "Baixar MP3",
                     on_click=lambda _: check_url_download(tipo_download=1)
                 ),
                 ft.ElevatedButton(
-                    "Download MP4",
+                    "Baixar Vídeo",
                     on_click=lambda _: check_url_download(tipo_download=2)
                 ),
                 ft.ElevatedButton(
-                    "Download Playlist",
+                    "Baixar Playlist",
                     on_click=lambda _: check_url_download(tipo_download=3)
                 ),
                 ft.ElevatedButton(
-                    "Download Playlist (Áudio)",
+                    "Baixar Playlist (MP3)",
                     on_click=lambda _: check_url_download(tipo_download=4)
                 ),
                 ft.ElevatedButton(
